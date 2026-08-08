@@ -1,0 +1,35 @@
+# === 1. Procesamiento de PDFs, Imágenes y Tablas (Base) ===
+pdfplumber==0.11.4       # Extracción de texto de PDFs respetando orden de lectura
+beautifulsoup4==4.12.3   # Limpieza de HTML
+lxml==5.3.0              # Parser rápido para BeautifulSoup
+pandas==2.2.3            # Lectura de CSV, XLSX y estructuración de datos
+openpyxl==3.1.5          # Soporte para archivos Excel (XLSX)
+pytesseract==0.3.13      # OCR para imágenes con texto
+Pillow==10.4.0           # Manejo de imágenes para pytesseract
+PyMuPDF==1.24.9          # Conversión de PDF a imágenes para OCR (módulo fitz)
+ftfy==6.3.1              # Reparación de codificaciones de texto raras (UTF-8)
+
+# === 2. NLP, Chunking y Detección de Idioma ===
+spacy==3.7.6             # Segmentación de oraciones para chunking lingüístico
+langdetect==1.0.9        # Detección de idioma (ES, EN, PT)
+
+# === 3. Modelos y Encoders (HuggingFace y Deep Learning) ===
+sentence-transformers==3.2.1  # Framework principal para los embeddings
+transformers==4.44.2          # Dependencia subyacente para los modelos
+torch==2.4.1                  # PyTorch (Backend de red neuronal)
+tqdm==4.66.5                  # Barras de progreso
+
+# === 4. Motores OCR Avanzados AI (Nuevos) ===
+easyocr==1.7.2           # Motor basado en PyTorch (Usa tu torch 2.4.1)
+paddleocr==3.7.0         # Motor rápido de alto rendimiento
+paddlepaddle>=3.0.0      # Deja que pip instale la versión estable compatible más reciente
+
+
+# === 5. Base de Datos Vectorial y Matemáticas ===
+faiss-cpu==1.8.0.post1   # Índice vectorial obligatorio
+numpy==1.26.4            # Manejo de vectores y normalización L2 (Fijado)
+
+# === 6. Utilidades ===
+regex==2024.7.24
+pyrosm==0.0.11              # Lectura de archivos .pbf (osm.pbf) - extracción de atributos OSM
+osmium==3.1.3               # Backend para pyrosm y manejo directo de .pbf
