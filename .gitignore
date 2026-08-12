@@ -1,1 +1,20 @@
+# Datos y datasets temporales
 data/
+datos.json
+
+# Modelos grandes locales (BGE-M3 ~2.2GB) — no subir al repositorio
+modelo_bge_m3/
+*.safetensors
+*.bin
+*.onnx
+
+# Entorno de Python y cache
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Directorios de salida
+salida/
+
