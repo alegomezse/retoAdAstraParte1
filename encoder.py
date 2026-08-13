@@ -154,7 +154,7 @@ def generar_embeddings(modelo: SentenceTransformer, textos: List[str]) -> np.nda
         batch_size=len(textos),
         convert_to_numpy=True,
         normalize_embeddings=False,
-        show_progress_bar=False,
+        show_progress_bar=True,
     )
     embeddings = np.ascontiguousarray(embeddings, dtype=np.float32)
     faiss.normalize_L2(embeddings)
