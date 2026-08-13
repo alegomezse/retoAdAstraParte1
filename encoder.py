@@ -195,13 +195,14 @@ def construir_indice_y_almacenar(
             for chunk in lote:
                 record = {
                     "faiss_id": faiss_id_actual,
-                    "chunk_id": chunk.get("chunk_id"),
                     "doc_id": chunk.get("doc_id"),
-                    "texto_original": chunk.get(CAMPO_TEXTO),
-                    "metadata": {
-                        k: v for k, v in chunk.items()
-                        if k not in {"chunk_id", "doc_id", CAMPO_TEXTO}
-                    },
+                    "chunk_id": chunk.get("chunk_id"),
+                    "fuente": chunk.get("fuente"),
+                    "formato": chunk.get("formato"),
+                    "fenomeno": int(chunk.get("fenomeno", 0)) if chunk.get("fenomeno") is not None else 0,
+                    "posicion": int(chunk.get("posicion", 0)) if chunk.get("posicion") is not None else 0,
+                    "num_tokens": int(chunk.get("num_tokens", 0)) if chunk.get("num_tokens") is not None else 0,
+                    "texto": chunk.get(CAMPO_TEXTO),
                 }
                 meta_file.write(json.dumps(record, ensure_ascii=False) + "\n")
                 faiss_id_actual += 1
@@ -255,7 +256,7 @@ def verificar(
     print(f"Índice cargado: ntotal = {indice.ntotal}, dim = {indice.d}")
     for rank, (faiss_id, score) in enumerate(zip(indices[0], scores[0]), 1):
         rec = store[int(faiss_id)] if 0 <= int(faiss_id) < len(store) else {}
-        preview = rec.get("texto_original", "")[:80]
+        preview = rec.get("texto", "")[:80]
         print(
             f"  {rank}. faiss_id={faiss_id} | score={score:.4f} | "
             f"chunk_id={rec.get('chunk_id')} | doc_id={rec.get('doc_id')}"
